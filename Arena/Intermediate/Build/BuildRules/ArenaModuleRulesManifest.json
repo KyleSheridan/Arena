@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Documents\\Unreal Projects\\Arena\\Source\\Arena\\Arena.Build.cs",
+		"D:\\Documents\\Unreal Projects\\Arena\\Source\\Arena.Target.cs",
+		"D:\\Documents\\Unreal Projects\\Arena\\Source\\ArenaEditor.Target.cs"
+	],
+	"EngineVersion": "4.25.3"
+}

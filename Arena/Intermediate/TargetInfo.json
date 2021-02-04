@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Arena",
+			"Path": "D:\\Documents\\Unreal Projects\\Arena\\Source\\Arena.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ArenaEditor",
+			"Path": "D:\\Documents\\Unreal Projects\\Arena\\Source\\ArenaEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

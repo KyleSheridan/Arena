@@ -61,10 +61,11 @@ void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AArenaCharacter::AddJumpToInputBuffer);
+	//PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AArenaCharacter::Attack);
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AArenaCharacter::AddAttackToInputBuffer);
+	PlayerInputComponent->BindAction("Attack2", IE_Pressed, this, &AArenaCharacter::Attack);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AArenaCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AArenaCharacter::MoveRight);
@@ -89,6 +90,27 @@ void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 void AArenaCharacter::OnResetVR()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+}
+
+void AArenaCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (inputActive && inputBuffer.size() > 0) {
+		switch (inputBuffer[0])
+		{
+		case IAttack:
+			Attack();
+			RemoveFromBuffer();
+			break;
+		case IJump:
+			Jump();
+			RemoveFromBuffer();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void AArenaCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
@@ -144,10 +166,42 @@ void AArenaCharacter::MoveRight(float Value)
 
 void AArenaCharacter::Attack()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Should work!"));
+	//UE_LOG(LogTemp, Warning, TEXT("Should work!"));
 
 	//UAnimInstance::Montage_Play()
-	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));
+	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));	
+	//FOnMontageSectionEnded()
+}
 
+void AArenaCharacter::RemoveFromBuffer()
+{
+	if (inputBuffer.size() > 0) {
+		inputBuffer.erase(inputBuffer.begin());
+	}
+}
+
+void AArenaCharacter::AddToInputBuffer(Input input, float waitTime)
+{
+	inputBuffer.push_back(input);
 	
+	FTimerHandle UnusedHandle;
+
+	UE_LOG(LogTemp, Display, TEXT("////////inputBuffer"));
+	
+	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AArenaCharacter::RemoveFromBuffer, waitTime, false);
+	
+	for (int i = 0; i < inputBuffer.size(); i++)
+	{
+		UE_LOG(LogTemp, Display, TEXT("%d"), inputBuffer[i]);
+	}
+}
+
+void AArenaCharacter::AddAttackToInputBuffer()
+{
+	AddToInputBuffer(IAttack, bufferTime);
+}
+
+void AArenaCharacter::AddJumpToInputBuffer()
+{
+	AddToInputBuffer(IJump, bufferTime);
 }

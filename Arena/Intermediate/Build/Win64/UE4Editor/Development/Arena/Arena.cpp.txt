@@ -1,2 +1,2 @@
-D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h
-D:\Documents\Unreal Projects\Arena\Source\Arena\Arena.h
+D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h
+D:\Documents\GitHub\Arena\Arena\Source\Arena\Arena.h

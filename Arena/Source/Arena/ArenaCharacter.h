@@ -18,6 +18,15 @@ class AArenaCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
+protected:
+	//
+	enum Input {
+		IAttack = 0,
+		IJump
+	};
+
+	std::vector<Input> inputBuffer;
+
 public:
 	AArenaCharacter();
 
@@ -33,8 +42,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess = "true"))
 	class UAnimMontage* KnightAttackMontage;
 
-protected:
+	//called every frame
+	virtual void Tick(float DeltaTime) override;
 
+protected:
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
@@ -63,11 +74,29 @@ protected:
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
 	void Attack();
+	
+	//remove from buffer after set time
+	void RemoveFromBuffer();
+
+	//Adds an input to buffer
+	void AddToInputBuffer(enum Input, float);
+	
+	//Adds an input to buffer
+	void AddAttackToInputBuffer();
+	
+	//Adds an input to buffer
+	void AddJumpToInputBuffer();
 
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
+
+	//time before input gets deleted from buffer
+	float bufferTime = 0.5f;
+
+	//to check wether anaction can be performed
+	bool inputActive = true;
 
 public:
 	/** Returns CameraBoom subobject **/

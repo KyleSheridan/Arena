@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+
+#include "Components/BoxComponent.h"
+
 #include "ArenaCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -40,7 +43,13 @@ public:
 
 	// Sword attack montage
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess = "true"))
-	class UAnimMontage* KnightAttackMontage;
+		class UAnimMontage* KnightAttackMontage;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Collision, meta = (AllowPrivateAccess = "true"))
+		class UBoxComponent* SwordCollisionBox;
+
+	//called at start
+	virtual void BeginPlay() override;
 
 	//called every frame
 	virtual void Tick(float DeltaTime) override;

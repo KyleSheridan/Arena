@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 	ARENA_API UClass* Z_Construct_UClass_AArenaCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_Arena();
+	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
@@ -34,6 +35,10 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwordCollisionBox_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SwordCollisionBox;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_KnightAttackMontage_MetaData[];
 #endif
@@ -69,6 +74,15 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 		{ "ModuleRelativePath", "ArenaCharacter.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Collision" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "ArenaCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox = { "SwordCollisionBox", nullptr, (EPropertyFlags)0x00100000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AArenaCharacter, SwordCollisionBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -120,6 +134,7 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AArenaCharacter_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AArenaCharacter, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_CameraBoom_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_CameraBoom_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AArenaCharacter_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_BaseLookUpRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_BaseTurnRate,
@@ -153,7 +168,7 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AArenaCharacter, 3566883858);
+	IMPLEMENT_CLASS(AArenaCharacter, 3617972608);
 	template<> ARENA_API UClass* StaticClass<AArenaCharacter>()
 	{
 		return AArenaCharacter::StaticClass();

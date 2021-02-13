@@ -4,6 +4,10 @@ D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\GameFramework/Char
 D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
 D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
+D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
+D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
+D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
 D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena\ArenaCharacter.generated.h
 D:\Program Files\UE_4.25\Engine\Source\Runtime\HeadMountedDisplay\Public\HeadMountedDisplayFunctionLibrary.h
 D:\Program Files\UE_4.25\Engine\Source\Runtime\HeadMountedDisplay\Public\HeadMountedDisplayTypes.h
@@ -14,8 +18,6 @@ D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMount
 D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\Camera/CameraComponent.h
 D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CameraComponent.generated.h
 D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\Components/CapsuleComponent.h
-D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
-D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
 D:\Program Files\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CapsuleComponent.generated.h
 D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementComponent.h
 D:\Program Files\UE_4.25\Engine\Source\Runtime\Engine\Classes\AI/Navigation/NavigationAvoidanceTypes.h

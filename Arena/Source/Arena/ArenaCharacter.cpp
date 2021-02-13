@@ -52,11 +52,48 @@ AArenaCharacter::AArenaCharacter()
 	{
 		KnightAttackMontage = KnightAttackMontageObject.Object;
 	}
+
+	SwordCollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("SwordCollisionBox"));
+	SwordCollisionBox->SetupAttachment(RootComponent);
+	SwordCollisionBox->SetCollisionProfileName("NoCollision");
+
+	SwordCollisionBox->SetHiddenInGame(false);
+}
+
+void AArenaCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//attach collision components to sockets
+	const FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::KeepWorld, false);
+
+	SwordCollisionBox->AttachToComponent(GetMesh(), AttachmentRules, "Sword_collision");
+}
+
+void AArenaCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (inputActive && inputBuffer.size() > 0) {
+		switch (inputBuffer[0])
+		{
+		case IAttack:
+			Attack();
+			RemoveFromBuffer();
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *SwordCollisionBox->GetCollisionProfileName().ToString());
+			break;
+		case IJump:
+			Jump();
+			RemoveFromBuffer();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Input
-
 void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
@@ -90,27 +127,6 @@ void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 void AArenaCharacter::OnResetVR()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
-}
-
-void AArenaCharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	if (inputActive && inputBuffer.size() > 0) {
-		switch (inputBuffer[0])
-		{
-		case IAttack:
-			Attack();
-			RemoveFromBuffer();
-			break;
-		case IJump:
-			Jump();
-			RemoveFromBuffer();
-			break;
-		default:
-			break;
-		}
-	}
 }
 
 void AArenaCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)

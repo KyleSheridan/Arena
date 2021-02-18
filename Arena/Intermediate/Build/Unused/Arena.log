@@ -3,10 +3,10 @@
   Using Visual Studio 2019 14.27.29111 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
   Building 4 actions with 16 processes...
     [1/4] ArenaCharacter.cpp
-    [2/4] UE4Editor-Arena-0012.lib
-       Creating library D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0012.lib and object D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0012.exp
-    [3/4] UE4Editor-Arena-0012.dll
-       Creating library D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0012.suppressed.lib and object D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0012.suppressed.exp
+    [2/4] UE4Editor-Arena-0018.lib
+       Creating library D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0018.lib and object D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0018.exp
+    [3/4] UE4Editor-Arena-0018.dll
+       Creating library D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0018.suppressed.lib and object D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\UE4Editor-Arena-0018.suppressed.exp
     [4/4] ArenaEditor.target
-  Total time in Parallel executor: 2.18 seconds
-  Total execution time: 2.62 seconds
+  Total time in Parallel executor: 6.38 seconds
+  Total execution time: 6.86 seconds

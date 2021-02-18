@@ -32,8 +32,8 @@
 /wd4244
 /wd4838
 /I .
-/I "D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena"
-/I "D:\Documents\Unreal Projects\Arena\Source"
+/I D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena
+/I D:\Documents\GitHub\Arena\Arena\Source
 /I Runtime
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
@@ -263,12 +263,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"D:\Documents\Unreal Projects\Arena\Source\Arena\ArenaGameMode.cpp"
-/FI"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h"
-/Fo"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\ArenaGameMode.cpp.obj"
+/FI"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"D:\Documents\GitHub\Arena\Arena\Source\Arena\ArenaGameMode.cpp"
+/FI"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h"
+/Fo"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\ArenaGameMode.cpp.obj"
 /TP
 /GR-
 /W4

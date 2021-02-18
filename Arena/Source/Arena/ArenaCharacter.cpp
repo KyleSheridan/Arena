@@ -9,6 +9,8 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 
+#include "Engine.h"
+
 //////////////////////////////////////////////////////////////////////////
 // AArenaCharacter
 
@@ -78,9 +80,8 @@ void AArenaCharacter::Tick(float DeltaTime)
 		switch (inputBuffer[0])
 		{
 		case IAttack:
-			Attack();
+			AttackInput();
 			RemoveFromBuffer();
-			UE_LOG(LogTemp, Warning, TEXT("%s"), *SwordCollisionBox->GetCollisionProfileName().ToString());
 			break;
 		case IJump:
 			Jump();
@@ -102,7 +103,7 @@ void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 	//PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AArenaCharacter::AddAttackToInputBuffer);
-	PlayerInputComponent->BindAction("Attack2", IE_Pressed, this, &AArenaCharacter::Attack);
+	PlayerInputComponent->BindAction("Attack2", IE_Pressed, this, &AArenaCharacter::AttackInput);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AArenaCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AArenaCharacter::MoveRight);
@@ -180,13 +181,19 @@ void AArenaCharacter::MoveRight(float Value)
 	}
 }
 
-void AArenaCharacter::Attack()
+void AArenaCharacter::AttackInput()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("Should work!"));
+	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));
+}
 
-	//UAnimInstance::Montage_Play()
-	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));	
-	//FOnMontageSectionEnded()
+void AArenaCharacter::AttackStart()
+{
+	SwordCollisionBox->SetCollisionProfileName("Weapon");
+}
+
+void AArenaCharacter::AttackEnd()
+{
+	SwordCollisionBox->SetCollisionProfileName("NoCollision");
 }
 
 void AArenaCharacter::RemoveFromBuffer()

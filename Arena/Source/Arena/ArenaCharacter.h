@@ -48,11 +48,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Collision, meta = (AllowPrivateAccess = "true"))
 		class UBoxComponent* SwordCollisionBox;
 
+public:
 	//called at start
 	virtual void BeginPlay() override;
 
 	//called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	//Initiates player attack
+	void AttackStart();
+
+	//Stops player attack
+	void AttackEnd();
 
 protected:
 	/** Resets HMD orientation in VR. */
@@ -82,7 +89,8 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
-	void Attack();
+	//Triggers attack animations
+	void AttackInput();
 	
 	//remove from buffer after set time
 	void RemoveFromBuffer();

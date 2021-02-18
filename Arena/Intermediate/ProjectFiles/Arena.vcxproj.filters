@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Arena.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{CBD3ED56-15D0-4B03-8072-7D9F75E03074}</UniqueIdentifier>
+      <UniqueIdentifier>{542D18FD-FB8F-460B-BB18-99845A4F6C7C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Arena.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{075BB287-1844-4E03-A051-B249F7381834}</UniqueIdentifier>
+      <UniqueIdentifier>{C5723BBD-9366-4659-A108-5F021D972851}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Arena">
-      <UniqueIdentifier>{CE43C18B-CC6F-420C-B52A-61740A687CF1}</UniqueIdentifier>
+      <UniqueIdentifier>{46F0293A-4708-46A5-B361-416A4C59F8AE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Arena\Arena.Build.cs">
       <Filter>Source\Arena</Filter>
@@ -51,6 +51,12 @@
       <Filter>Source\Arena</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Arena\ArenaGameMode.h">
+      <Filter>Source\Arena</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Arena\AttackNotifyState.cpp">
+      <Filter>Source\Arena</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Arena\AttackNotifyState.h">
       <Filter>Source\Arena</Filter>
     </ClInclude>
   </ItemGroup>

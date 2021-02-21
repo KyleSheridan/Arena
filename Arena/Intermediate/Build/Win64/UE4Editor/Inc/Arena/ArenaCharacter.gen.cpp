@@ -44,6 +44,14 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_KnightAttackMontage;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_sequenceResetTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_sequenceResetTime;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_maxNumAttacks_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_maxNumAttacks;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BaseLookUpRate_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_BaseLookUpRate;
@@ -94,6 +102,24 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage = { "KnightAttackMontage", nullptr, (EPropertyFlags)0x0010000000010015, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AArenaCharacter, KnightAttackMontage), Z_Construct_UClass_UAnimMontage_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AArenaCharacter_Statics::NewProp_sequenceResetTime_MetaData[] = {
+		{ "Category", "Attack" },
+		{ "Comment", "//Time in seconds before attack sequence is reset\n" },
+		{ "ModuleRelativePath", "ArenaCharacter.h" },
+		{ "ToolTip", "Time in seconds before attack sequence is reset" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AArenaCharacter_Statics::NewProp_sequenceResetTime = { "sequenceResetTime", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AArenaCharacter, sequenceResetTime), METADATA_PARAMS(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_sequenceResetTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_sequenceResetTime_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AArenaCharacter_Statics::NewProp_maxNumAttacks_MetaData[] = {
+		{ "Category", "Attack" },
+		{ "Comment", "//The total number of attacks in the base attack montage\n" },
+		{ "ModuleRelativePath", "ArenaCharacter.h" },
+		{ "ToolTip", "The total number of attacks in the base attack montage" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AArenaCharacter_Statics::NewProp_maxNumAttacks = { "maxNumAttacks", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AArenaCharacter, maxNumAttacks), METADATA_PARAMS(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_maxNumAttacks_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AArenaCharacter_Statics::NewProp_maxNumAttacks_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AArenaCharacter_Statics::NewProp_BaseLookUpRate_MetaData[] = {
 		{ "Category", "Camera" },
 		{ "Comment", "/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */" },
@@ -136,6 +162,8 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AArenaCharacter_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_SwordCollisionBox,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_KnightAttackMontage,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_sequenceResetTime,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_maxNumAttacks,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_BaseLookUpRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_BaseTurnRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AArenaCharacter_Statics::NewProp_FollowCamera,
@@ -168,7 +196,7 @@ void EmptyLinkFunctionForGeneratedCodeArenaCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AArenaCharacter, 3617972608);
+	IMPLEMENT_CLASS(AArenaCharacter, 144952186);
 	template<> ARENA_API UClass* StaticClass<AArenaCharacter>()
 	{
 		return AArenaCharacter::StaticClass();

@@ -82,6 +82,7 @@ void AArenaCharacter::Tick(float DeltaTime)
 		case IAttack:
 			AttackInput();
 			RemoveFromBuffer();
+			inputActive = false;
 			break;
 		case IJump:
 			Jump();
@@ -90,6 +91,14 @@ void AArenaCharacter::Tick(float DeltaTime)
 		default:
 			break;
 		}
+	}
+
+	timeSinceLastAttack += DeltaTime;
+
+	if (timeSinceLastAttack > sequenceResetTime && inputActive) {
+		CancelSequence();
+
+		timeSinceLastAttack = 0;
 	}
 }
 
@@ -183,7 +192,9 @@ void AArenaCharacter::MoveRight(float Value)
 
 void AArenaCharacter::AttackInput()
 {
-	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));
+	FString montageSection = "Start_" + FString::FromInt(currentAttackAnim);
+
+	PlayAnimMontage(KnightAttackMontage, 1.0f, FName(*montageSection));
 }
 
 void AArenaCharacter::AttackStart()
@@ -194,6 +205,10 @@ void AArenaCharacter::AttackStart()
 void AArenaCharacter::AttackEnd()
 {
 	SwordCollisionBox->SetCollisionProfileName("NoCollision");
+	NextAttackInSequence();
+	inputActive = true;
+
+	timeSinceLastAttack = 0;
 }
 
 void AArenaCharacter::RemoveFromBuffer()
@@ -209,14 +224,7 @@ void AArenaCharacter::AddToInputBuffer(Input input, float waitTime)
 	
 	FTimerHandle UnusedHandle;
 
-	UE_LOG(LogTemp, Display, TEXT("////////inputBuffer"));
-	
 	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AArenaCharacter::RemoveFromBuffer, waitTime, false);
-	
-	for (int i = 0; i < inputBuffer.size(); i++)
-	{
-		UE_LOG(LogTemp, Display, TEXT("%d"), inputBuffer[i]);
-	}
 }
 
 void AArenaCharacter::AddAttackToInputBuffer()
@@ -227,4 +235,20 @@ void AArenaCharacter::AddAttackToInputBuffer()
 void AArenaCharacter::AddJumpToInputBuffer()
 {
 	AddToInputBuffer(IJump, bufferTime);
+}
+
+void AArenaCharacter::NextAttackInSequence()
+{
+	if (currentAttackAnim >= maxNumAttacks) {
+		currentAttackAnim = 1;
+	}
+	else
+	{
+		currentAttackAnim++;
+	}
+}
+
+void AArenaCharacter::CancelSequence()
+{
+	currentAttackAnim = 1;
 }

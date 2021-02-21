@@ -41,6 +41,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
+	//The total number of attacks in the base attack montage
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Attack)
+		int maxNumAttacks;
+
+	//Time in seconds before attack sequence is reset
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Attack)
+		float sequenceResetTime;
+
 	// Sword attack montage
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess = "true"))
 		class UAnimMontage* KnightAttackMontage;
@@ -60,6 +68,11 @@ public:
 
 	//Stops player attack
 	void AttackEnd();
+
+	//sets canAttack variable
+	void SetInputActive(bool val) {
+		inputActive = val;
+	}
 
 protected:
 	/** Resets HMD orientation in VR. */
@@ -104,6 +117,12 @@ protected:
 	//Adds an input to buffer
 	void AddJumpToInputBuffer();
 
+	//Change the currentAttackAnim variable to the next attack in sequence
+	void NextAttackInSequence();
+
+	//Will cancel the sequence after a period of time
+	void CancelSequence();
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -112,8 +131,14 @@ protected:
 	//time before input gets deleted from buffer
 	float bufferTime = 0.5f;
 
-	//to check wether anaction can be performed
+	//to check if an action can be performed
 	bool inputActive = true;
+
+	//number representing the current attack in the sequence
+	int currentAttackAnim = 1;
+
+	//used to check when last attack was for resetting attack sequence
+	float timeSinceLastAttack = 0;
 
 public:
 	/** Returns CameraBoom subobject **/

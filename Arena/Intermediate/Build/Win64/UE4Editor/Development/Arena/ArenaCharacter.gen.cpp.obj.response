@@ -32,16 +32,14 @@
 /wd4244
 /wd4838
 /I .
-/I "D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena"
-/I "D:\Documents\Unreal Projects\Arena\Source"
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
 /I Runtime
+/I Runtime\Engine\Classes
+/I Runtime\Engine\Public
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime\CoreUObject\Public
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
-/I Runtime\Engine\Classes
-/I Runtime\Engine\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\NetCore
 /I Runtime\Net
 /I Runtime\Net\Core\Classes
@@ -232,6 +230,8 @@
 /I Runtime\Experimental\GeometryCollectionSimulationCore\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
+/I D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena
+/I D:\Documents\GitHub\Arena\Arena\Source
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AugmentedReality
 /I Runtime\AugmentedReality\Public
 /I ThirdParty\PhysX3\PxShared\include
@@ -263,12 +263,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena\ArenaCharacter.gen.cpp"
-/FI"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h"
-/Fo"D:\Documents\Unreal Projects\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\ArenaCharacter.gen.cpp.obj"
+/FI"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\ArenaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Inc\Arena\ArenaCharacter.gen.cpp"
+/FI"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\Definitions.Arena.h"
+/Fo"D:\Documents\GitHub\Arena\Arena\Intermediate\Build\Win64\UE4Editor\Development\Arena\ArenaCharacter.gen.cpp.obj"
 /TP
 /GR-
 /W4

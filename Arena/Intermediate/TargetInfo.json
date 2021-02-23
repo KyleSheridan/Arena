@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "Arena",
-			"Path": "C:\\Users\\s19161460\\Downloads\\Arena-ahmed\\Arena-ahmed\\Arena\\Source\\Arena.Target.cs",
+			"Path": "D:\\Documents\\GitHub\\Arena\\Arena\\Source\\Arena.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "ArenaEditor",
-			"Path": "C:\\Users\\s19161460\\Downloads\\Arena-ahmed\\Arena-ahmed\\Arena\\Source\\ArenaEditor.Target.cs",
+			"Path": "D:\\Documents\\GitHub\\Arena\\Arena\\Source\\ArenaEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]

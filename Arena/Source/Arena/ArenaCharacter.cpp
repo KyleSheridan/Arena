@@ -9,6 +9,8 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 
+#include "Engine.h"
+
 //////////////////////////////////////////////////////////////////////////
 // AArenaCharacter
 
@@ -52,19 +54,65 @@ AArenaCharacter::AArenaCharacter()
 	{
 		KnightAttackMontage = KnightAttackMontageObject.Object;
 	}
+
+	SwordCollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("SwordCollisionBox"));
+	SwordCollisionBox->SetupAttachment(RootComponent);
+	SwordCollisionBox->SetCollisionProfileName("NoCollision");
+
+	SwordCollisionBox->SetHiddenInGame(false);
+}
+
+void AArenaCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//attach collision components to sockets
+	const FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::KeepWorld, false);
+
+	SwordCollisionBox->AttachToComponent(GetMesh(), AttachmentRules, "Sword_collision");
+}
+
+void AArenaCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (inputActive && inputBuffer.size() > 0) {
+		switch (inputBuffer[0])
+		{
+		case IAttack:
+			AttackInput();
+			RemoveFromBuffer();
+			inputActive = false;
+			break;
+		case IJump:
+			Jump();
+			RemoveFromBuffer();
+			break;
+		default:
+			break;
+		}
+	}
+
+	timeSinceLastAttack += DeltaTime;
+
+	if (timeSinceLastAttack > sequenceResetTime && inputActive) {
+		CancelSequence();
+
+		timeSinceLastAttack = 0;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Input
-
 void AArenaCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AArenaCharacter::AddJumpToInputBuffer);
+	//PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AArenaCharacter::Attack);
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AArenaCharacter::AddAttackToInputBuffer);
+	PlayerInputComponent->BindAction("Attack2", IE_Pressed, this, &AArenaCharacter::AttackInput);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AArenaCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AArenaCharacter::MoveRight);
@@ -142,12 +190,65 @@ void AArenaCharacter::MoveRight(float Value)
 	}
 }
 
-void AArenaCharacter::Attack()
+void AArenaCharacter::AttackInput()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Should work!"));
+	FString montageSection = "Start_" + FString::FromInt(currentAttackAnim);
 
-	//UAnimInstance::Montage_Play()
-	PlayAnimMontage(KnightAttackMontage, 1.0f, FName("Start_1"));
+	PlayAnimMontage(KnightAttackMontage, 1.0f, FName(*montageSection));
+}
 
+void AArenaCharacter::AttackStart()
+{
+	SwordCollisionBox->SetCollisionProfileName("Weapon");
+}
+
+void AArenaCharacter::AttackEnd()
+{
+	SwordCollisionBox->SetCollisionProfileName("NoCollision");
+	NextAttackInSequence();
+	inputActive = true;
+
+	timeSinceLastAttack = 0;
+}
+
+void AArenaCharacter::RemoveFromBuffer()
+{
+	if (inputBuffer.size() > 0) {
+		inputBuffer.erase(inputBuffer.begin());
+	}
+}
+
+void AArenaCharacter::AddToInputBuffer(Input input, float waitTime)
+{
+	inputBuffer.push_back(input);
 	
+	FTimerHandle UnusedHandle;
+
+	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AArenaCharacter::RemoveFromBuffer, waitTime, false);
+}
+
+void AArenaCharacter::AddAttackToInputBuffer()
+{
+	AddToInputBuffer(IAttack, bufferTime);
+}
+
+void AArenaCharacter::AddJumpToInputBuffer()
+{
+	AddToInputBuffer(IJump, bufferTime);
+}
+
+void AArenaCharacter::NextAttackInSequence()
+{
+	if (currentAttackAnim >= maxNumAttacks) {
+		currentAttackAnim = 1;
+	}
+	else
+	{
+		currentAttackAnim++;
+	}
+}
+
+void AArenaCharacter::CancelSequence()
+{
+	currentAttackAnim = 1;
 }
